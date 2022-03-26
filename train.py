@@ -46,7 +46,8 @@ def clean_data(data):
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-ds = TabularDatasetFactory.from_delimited_files(['https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'])
+dataset_path = "https://github.com/ugururesin/Azure-ML-Capstone-Project/blob/main/dataset/heart_failure_clinical_records_dataset.csv"
+ds = TabularDatasetFactory.from_delimited_files(dataset_path)
 
 # Calling the clean_data func
 x, y = clean_data(ds)

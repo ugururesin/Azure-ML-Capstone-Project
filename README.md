@@ -2,7 +2,7 @@
 
 ## Table of Content
 * [Overview](#overview)
-* [The Architecture](#the-architecture)
+* [The Project Flow](#the-project-flow)
 * [Project Main Steps](#key-steps)
     * [1. Authentication](#authentication)
     * [2. Automated ML Experiment](#automated-ml-experiment)
@@ -31,10 +31,10 @@ All steps are summarized as below:
 7. **Create and publish a pipeline** : In this step, we automate this workflow by creating a pipeline with the Python SDK.
 
 
-## The Architecture
+## The Project Flow
 These are the steps we followed in this project :
 
-![diagram](img/architecture.png)
+![diagram](img/capstone-diagram.png)
 
 ### Key Steps
 

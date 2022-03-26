@@ -32,7 +32,7 @@ All steps are summarized as below:
 
 
 ## The Project Flow
-These are the steps we followed in this project :
+These are the steps I followed in this project :
 
 ![diagram](img/capstone-diagram.png)
 

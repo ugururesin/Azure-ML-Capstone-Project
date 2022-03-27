@@ -159,12 +159,12 @@ Then, the endpoint is tested. This worked and yielded the following predictions:
 
 ## Screen Recording
 Every step in the project is reflected to the fast-track video with an Audio as given below:  
-[Youtube Link](https://www.youtube.com/TBD)
+[Youtube Link](https://www.youtube.com/watch?v=BfEJqNmfxJo)
 
 ## Future Improvement Suggestions
 * The target feature was imbalanced (see the screenshot below) and this leads a biased model that yields biased predictions.  
 
-![tf_imbalance](/img/tf_imbalance)
+![tf_imbalance](/img/tf_imbalance.png)
 
 **The imbalance issue would be handled as one or more of the following techniques:**
 1.) Upsampling Minority Class  

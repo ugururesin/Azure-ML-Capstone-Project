@@ -176,4 +176,6 @@ Every step in the project is reflected to the fast-track video with an Audio as 
 4.) Combine Oversampling and Undersampling Techniques  
 5.) Balanced Class Weight  
 
-* For better metrics, the deep learning would be enabled in AutoML experimentation, however, this will increase the computation time.
+* For better metrics, the deep learning would be enabled in AutoML experimentation, however, this will increase the computation time.  
+
+* Instead of *accuracy*, the *AUC Weighted* can be choosen as the primary metric since the feature response is imbalanced and the dataset is small.

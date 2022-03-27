@@ -155,9 +155,7 @@ Then, the endpoint is tested. This worked and yielded the following predictions:
 The image below shows that the application insights is working.  
 ![app_insights](/img/15_appins.png)  
 
-
-
-## Proof of Allocated Resource Removal  
+## Proof of Allocated Resource Removal
 The following code cells shows that the allocated compute resources and endpoint service is deleted.  
 ![comp_deletion1](/img/17_deletion1.png)  
 ![comp_deletion2](/img/18_deletion2.png)  

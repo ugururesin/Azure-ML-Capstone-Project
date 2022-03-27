@@ -10,9 +10,9 @@
     * [4. Result Comparison](#result-comparison)
     * [5. Model Deployment](#model-deployment)
     * [6. Testing the Model and Endpoint](#testing-the-model-and-endpoint)
-    * [7. Application Insights](application-insights)
-    * [8. Proof of Allocated Resource Removal](proof-of-allocated-resource-removal)
-    * [9. Documentation](table-of-content)
+    * [7. Application Insights](#application-insights)
+    * [8. Proof of Allocated Resource Removal](#proof-of-allocated-resource-removal)
+    * [9. Documentation](#table-of-content)
 * [Screen Recording](#Screen-Recording-with-Subtitles)
 * [Future Improvement Suggestions](#future-improvement-suggestions)
 

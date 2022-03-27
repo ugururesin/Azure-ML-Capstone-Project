@@ -10,7 +10,9 @@
     * [4. Result Comparison](#result-comparison)
     * [5. Model Deployment](#model-deployment)
     * [6. Testing the Model and Endpoint](#testing-the-model-and-endpoint)
-    * [7. Documentation](table-of-content)
+    * [7. Application Insights](application-insights)
+    * [8. Proof of Allocated Resource Removal](proof-of-allocated-resource-removal)
+    * [9. Documentation](table-of-content)
 * [Screen Recording](#Screen-Recording-with-Subtitles)
 * [Future Improvement Suggestions](#future-improvement-suggestions)
 
@@ -155,7 +157,6 @@ Then, the endpoint is tested. This worked and yielded the following predictions:
 ## Proof of Allocated Resource Removal
 ![comp_deletion1](/img/17_deletion1.png)  
 ![comp_deletion2](/img/18_deletion2.png)  
-
 
 ## Screen Recording
 Every step in the project is reflected to the fast-track video with an Audio as given below:  

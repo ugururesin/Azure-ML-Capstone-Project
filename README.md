@@ -167,7 +167,7 @@ Every step in the project is reflected to the fast-track video with an Audio as 
 
 ![tf_imbalance](/img/tf_imbalance.png)
 
-**The imbalance issue would be handled as one or more of the following techniques:**. 
+**The imbalance issue would be handled as one or more of the following techniques:**  
 1.) Upsampling Minority Class  
 2.) Downsampling Majority Class  
 3.) Generate Synthetic Data  

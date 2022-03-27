@@ -52,26 +52,121 @@ Most cardiovascular diseases can be prevented by addressing behavioural risk fac
 Developing a ML model to predict death events using 12 clinical features.  
 
 ## Automated ML
-tbd  
+The AutoML is used to generate different ML models to pick the best one, deploy and consume.  
+I choose the followimng AutoML settings.  
+
+* **experiment_timeout_minutes:** 15 minutes is set since the dataset is small.  
+
+* **iterations:** 50 is set since the dataset is small.  
+
+* **max_concurrent_iterations:** Represents the maximum number of iterations that would be executed in parallel.  
+
+* **n_cross_validations:** To avoid overfitting and ensure randomness.  
+
+* **primary_metric:** Accuracy is selected to be able to compare with HyperDrive's results.  
+
+* **task:** Classification is selected since the response variable is binary (0 or 1).  
+
+* **enable_early_stopping:** Activated to avoid overfitting.  
+
+'''
+automl_settings = {
+    "experiment_timeout_minutes": 15,
+    "iterations": 50,
+    "max_concurrent_iterations": 3,
+    "n_cross_validations": 3,
+    "primary_metric" : 'accuracy',
+    "featurization" : 'auto',
+    "verbosity": logging.INFO
+}
+'''
+
+'''
+automl_config = AutoMLConfig(
+    task = "classification", 
+    training_data = train_data,
+    label_column_name="DEATH_EVENT",
+    enable_early_stopping= True,
+    debug_log = "automl_errors.log",
+    compute_target = compute_target,
+    **automl_settings
+)
+'''
+
+This configuration is yielded the following models:  
+![aml_runs1](/img/03_aml_runs1.png)
+
+![aml_runs1](/img/04_aml_runs2.png)
+
+#### AML Results
+The best model is a 'VotingEnsemble' whose details is given in the following figures including it's metrics.  
+
+![aml_best_detail](/img/05_bestmodel_details_aml.png)
+![aml_best_graph](/img/06_bestmodel_metric_graph_aml.png)
+![aml_best_metrics](/img/07_metrics_aml.png)
+
 
 ## HyperDrive 
-tbd  
+In addition to the AutoML, the Hyperdrive is also used to generate a ML model for the health-failure dataset.  
+In this step, scikit-learn library is used to fit a **logistic-regression** model which can be considered as a fundamental classification algorithm especially for binary classification problems for small datasets. Therefore, it's logical to choose this model before training more complex models to get an insight about the metrics and the best fit.  
+
+I used 2 hyperparameters in the hyper-drive as shown in the figure below:  
+![hdr_config](/img/08_hdr_config.png)
+
+**C: The regularization strength.** Regularization generally refers the concept that there should be a complexity penalty for more extreme parameters. The idea is that just looking at the training data and not paying attention to how extreme one's parameters are leads to overfitting. A high value of C tells the model to give high weight to the training data, and a lower weight to the complexity penalty. A low value tells the model to give more weight to this complexity penalty at the expense of fitting to the training data. Basically, a high C means "Trust this training data a lot", while a low value says "This data may not be fully representative of the real world data, so if it's telling you to make a parameter really large, don't listen to it".
+
+**Reference:** https://stackoverflow.com/questions/67513075/what-is-c-parameter-in-sklearn-logistic-regression
+
+**max_iter:** The number of iterations. There is a trade-off between the max_iter and training time. Thus, I selected the max_iter intuitively.
+
+#### HyperDrive Results
+As you can see the graph below, the best accuracy for the hyperdrive experiments is around 77% and it's way lower than the model created by the AML.
+
+![hdr_metrics](/img/09_metrics_hdr.png)  
+
+The details of the LR model is given below:
+![hdr_details](/img/10_bestmodel_details_hdr.png)  
 
 ## Result Comparison  
-tbd  
+-|AutoML| HyperDrive
+--- | --- | ---  
+Best Model | VotingEnsemble | Logistic-Regression
+Accuracy | 0.962 | 0.777
+
 
 ## Model Deployment
-tbd  
+Since the HyperDrive yielded a model with a low accuracy, only the AutoML model is deployed.  
+This could be seen in the following screenshot:  
+
+![end_aci](/img/12_endpoint_aci.png)  
+
 
 ## Testing the Model and Endpoint
-tbd  
+To test the deployment and consume the endpoint a data is generated as follows (in the endpoint.py file):  
+![hdr_details](/img/13_sample_data_to_test.png)  
+
+The REST endpoint and the primary key is generated in the Endpoint section and put in the endpoint.py file.  
+Then, the endpoint is tested. This worked and yielded the following predictions:  
+![consume_test](/img/14_consume_testresult.png)  
+
+## Application Insights
+![app_insights](/img/15_appins.png)  
+
+## Proof of Allocated Resource Removal
+![comp_deletion1](/img/17_deletion1.png)  
+![comp_deletion2](/img/18_deletion2.png)  
+
 
 ## Screen Recording
 Every step in the project is reflected to the fast-track video with an Audio as given below:  
 [Youtube Link](https://www.youtube.com/TBD)
 
 ## Future Improvement Suggestions
-* The data was imbalanced and this leads a biased model that yields biased predictions. The imbalance issue would be handled as one or more of the following techniques  
+* The target feature was imbalanced (see the screenshot below) and this leads a biased model that yields biased predictions.  
+
+![tf_imbalance](/img/tf_imbalance)
+
+**The imbalance issue would be handled as one or more of the following techniques:**
 1.) Upsampling Minority Class  
 2.) Downsampling Majority Class  
 3.) Generate Synthetic Data  

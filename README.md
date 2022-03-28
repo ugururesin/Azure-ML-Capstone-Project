@@ -71,7 +71,7 @@ I choose the followimng AutoML settings.
 
 * **enable_early_stopping:** Activated to avoid overfitting.  
 
-'''
+```
 automl_settings = {
     "experiment_timeout_minutes": 15,
     "iterations": 50,
@@ -81,9 +81,9 @@ automl_settings = {
     "featurization" : 'auto',
     "verbosity": logging.INFO
 }
-'''
+```
 
-'''
+```
 automl_config = AutoMLConfig(
     task = "classification", 
     training_data = train_data,
@@ -93,7 +93,7 @@ automl_config = AutoMLConfig(
     compute_target = compute_target,
     **automl_settings
 )
-'''
+```
 
 This configuration is yielded the following models:  
 ![aml_runs1](/img/03_aml_runs1.png)
